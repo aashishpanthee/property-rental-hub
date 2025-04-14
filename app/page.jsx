@@ -1,5 +1,13 @@
+import { Hero, HomeProperties, InfoBoxes } from "@/components";
+
 function HomePage() {
-  return <div className='font-Poppins'>HomePage</div>;
+  return (
+    <>
+      <Hero />
+      <InfoBoxes />
+      <HomeProperties />
+    </>
+  );
 }
 
 export default HomePage;
