@@ -31,10 +31,14 @@ body {
 }
 
 /* Custom Tailwind Classes */
-@layer utilities {
-  .grid-70-30 {
-    display: grid;
-    grid-template-columns: 70% 28%;
-    gap: 2%;
+@layer components {
+  .layout-70-30 {
+    @apply grid grid-cols-1 gap-6 w-full;
+  }
+
+  @media (min-width: 768px) {
+    .layout-70-30 {
+      @apply grid-cols-[70%_28%];
+    }
   }
 }
