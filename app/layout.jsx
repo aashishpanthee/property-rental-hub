@@ -1,5 +1,6 @@
 import "@/assets/styles/globals.css";
 import { Footer, Navbar } from "@/components";
+import AuthProvider from "@/components/AuthProvider";
 
 export const metadata = {
   title: "Property Rental Hub",
@@ -9,13 +10,15 @@ export const metadata = {
 
 function MainLayout({ children }) {
   return (
-    <html lang='en'>
-      <body className='font-Poppins'>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-      </body>
-    </html>
+    <AuthProvider>
+      <html lang='en'>
+        <body className='font-Poppins'>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </body>
+      </html>
+    </AuthProvider>
   );
 }
 
