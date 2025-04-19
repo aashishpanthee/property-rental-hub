@@ -12,9 +12,9 @@ function MainLayout({ children }) {
   return (
     <AuthProvider>
       <html lang='en'>
-        <body className='font-Poppins'>
+        <body className='font-Poppins min-h-screen flex flex-col'>
           <Navbar />
-          <main>{children}</main>
+          <main className='flex-1'>{children}</main>
           <Footer />
         </body>
       </html>
