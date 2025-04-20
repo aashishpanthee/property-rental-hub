@@ -1,22 +1,23 @@
 'use server';
-import cloudinary from '@/config/cloudinary';
 import connectDb from '@/config/database';
 import Property from '@/models/Property';
 import { getSessionUser } from '@/utils/getSessionUser';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
-export async function addProperty(formData) {
+export async function updateProperty(propertyId, formData) {
   await connectDb();
   const sessionUser = await getSessionUser();
   if (!sessionUser || !sessionUser.userId) {
     throw new Error('UserId is required');
   }
   const { userId } = sessionUser;
-  // Access all values from amenties and images
+  const existingProperty = await Property.findById(propertyId);
+  // Verify Ownership
+  if (existingProperty.owner.toString() !== userId) {
+    throw new Error('Current user does not own this property');
+  }
   const amenities = formData.getAll('amenities');
-  const images = formData.getAll('images').filter((image) => image.name !== '');
-
   const propertyData = {
     owner: userId,
     type: formData.get('type'),
@@ -43,29 +44,7 @@ export async function addProperty(formData) {
       phone: formData.get('seller_info.phone'),
     },
   };
-
-  const imageUrls = [];
-  for (const imageFile of images) {
-    const imageBuffer = await imageFile.arrayBuffer();
-    const imageArray = Array.from(new Uint8Array(imageBuffer));
-    const imageData = Buffer.from(imageArray);
-
-    // Convert to Base64
-    const imageBase64 = imageData.toString('base64');
-
-    // make request to cloudinary
-    const result = await cloudinary.uploader.upload(`data:image/png;base64,${imageBase64}`, {
-      folder: 'propertyrental',
-    });
-
-    imageUrls.push(result.secure_url);
-  }
-
-  propertyData.images = imageUrls;
-
-  const newProperty = new Property(propertyData);
-  await newProperty.save();
-
-  revalidatePath('/', '/layout');
-  redirect(`/properties/${newProperty._id}`);
+  const updatedProperty = await Property.findByIdAndUpdate(propertyId, propertyData);
+  revalidatePath('/', 'layout');
+  redirect(`/properties/${updatedProperty._id}`);
 }
