@@ -1,18 +1,23 @@
-import PropertyDetails from '@/components/PropertyDetails';
-import PropertyHeaderImage from '@/components/PropertyHeaderImage';
-import PropertyImages from '@/components/PropertyImages';
-import connectDb from '@/config/database';
-import Property from '@/models/Property';
-import { convertToSerializableObject } from '@/utils/convertToObject';
-import Link from 'next/link';
-import { FaArrowLeft } from 'react-icons/fa';
+import {
+  BookmarkButton,
+  PropertyContactForm,
+  PropertyDetails,
+  PropertyHeaderImage,
+  PropertyImages,
+  ShareButton,
+} from "@/components";
+import connectDb from "@/config/database";
+import Property from "@/models/Property";
+import { convertToSerializableObject } from "@/utils/convertToObject";
+import Link from "next/link";
+import { FaArrowLeft } from "react-icons/fa";
 async function PropertyPage({ params }) {
   await connectDb();
   const { id } = await params;
   const propertyDoc = await Property.findById(id).lean();
   const property = convertToSerializableObject(propertyDoc);
   if (!property) {
-    throw new Error('Property not found');
+    throw new Error("Property not found");
   }
   return (
     <>
@@ -31,6 +36,11 @@ async function PropertyPage({ params }) {
           <div className='layout-70-30'>
             {/* Property Info */}
             <PropertyDetails property={property} />
+            <aside className='space-y-4'>
+              <BookmarkButton property={property} />
+              <ShareButton property={property} />
+              <PropertyContactForm property={property} />
+            </aside>
           </div>
         </div>
       </section>
