@@ -1,23 +1,23 @@
-import profileDefault from '@/assets/images/profile.png';
-import ProfileProperties from '@/components/ProfileProperties';
-import connectDb from '@/config/database';
-import Property from '@/models/Property';
-import { convertToSerializableObject } from '@/utils/convertToObject';
-import { getSessionUser } from '@/utils/getSessionUser';
-import Image from 'next/image';
+import profileDefault from "@/assets/images/profile.png";
+import { ProfileProperties } from "@/components";
+import connectDb from "@/config/database";
+import Property from "@/models/Property";
+import { convertToSerializableObject } from "@/utils/convertToObject";
+import { getSessionUser } from "@/utils/getSessionUser";
+import Image from "next/image";
 
 async function ProfilePage() {
   await connectDb();
   const sessionUser = await getSessionUser();
   const { userId } = sessionUser;
   if (!userId) {
-    throw new Error('User not found');
+    throw new Error("User not found");
   }
 
   const propertiesDocs = await Property.find({ owner: userId }).lean();
   const properties = propertiesDocs.map(convertToSerializableObject);
   if (!properties) {
-    throw new Error('No properties found');
+    throw new Error("No properties found");
   }
 
   return (

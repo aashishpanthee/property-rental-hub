@@ -1,7 +1,7 @@
-import PropertyEditForm from '@/components/PropertyEditForm';
-import connectDb from '@/config/database';
-import Property from '@/models/Property';
-import { convertToSerializableObject } from '@/utils/convertToObject';
+import { PropertyEditForm } from "@/components";
+import connectDb from "@/config/database";
+import Property from "@/models/Property";
+import { convertToSerializableObject } from "@/utils/convertToObject";
 
 async function PropertyEditPage({ params }) {
   await connectDb();

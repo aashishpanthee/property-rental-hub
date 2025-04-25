@@ -1,13 +1,12 @@
-import '@/assets/styles/globals.css';
-import { Footer, Navbar } from '@/components';
-import AuthProvider from '@/components/AuthProvider';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import "@/assets/styles/globals.css";
+import { AuthProvider, Footer, Navbar } from "@/components";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata = {
-  title: 'Property Rental Hub',
-  keywords: ['property', 'rental', 'real estate', 'real estate rental hub'],
-  description: 'Find the best properties for your next home',
+  title: "Property Rental Hub",
+  keywords: ["property", "rental", "real estate", "real estate rental hub"],
+  description: "Find the best properties for your next home",
 };
 
 function MainLayout({ children }) {
