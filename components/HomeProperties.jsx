@@ -1,3 +1,5 @@
+"use server";
+
 import { PropertyCard } from "@/components";
 import connectDb from "@/config/database";
 import Property from "@/models/Property";

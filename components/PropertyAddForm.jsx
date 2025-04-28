@@ -1,8 +1,13 @@
-import { addProperty } from '@/app/actions/addProperty';
+"use client";
+import { addProperty } from "@/app/actions/addProperty";
+import SubmitMessageButton from "@/components/SubmitMessageButton";
+import { useActionState } from "react";
+import { FaPlus } from "react-icons/fa";
 
 const PropertyAddForm = () => {
+  const [state, formAction, pending] = useActionState(addProperty, {});
   return (
-    <form action={addProperty}>
+    <form action={formAction}>
       <h2 className='text-3xl text-center font-semibold mb-6'>Add Property</h2>
 
       <div className='mb-4'>
@@ -299,12 +304,7 @@ const PropertyAddForm = () => {
       </div>
 
       <div>
-        <button
-          className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline cursor-pointer'
-          type='submit'
-        >
-          Add Property
-        </button>
+        <SubmitMessageButton pending={pending} content='Add Property' icon={<FaPlus className='mr-2' />} />
       </div>
     </form>
   );

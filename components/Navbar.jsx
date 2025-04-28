@@ -1,12 +1,13 @@
-'use client';
-import logo from '@/assets/images/logo-white.png';
-import profileDefault from '@/assets/images/profile.png';
-import { getProviders, signIn, signOut, useSession } from 'next-auth/react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { FaGoogle } from 'react-icons/fa';
+"use client";
+import logo from "@/assets/images/logo-white.png";
+import profileDefault from "@/assets/images/profile.png";
+import { getProviders, signIn, signOut, useSession } from "next-auth/react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { FaGoogle } from "react-icons/fa";
+import UnreadMessageCount from "./UnreadMessageCount";
 
 function Navbar() {
   const { data: session } = useSession();
@@ -68,7 +69,7 @@ function Navbar() {
                 <Link
                   href='/'
                   className={`text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 ${
-                    pathname === '/' ? 'bg-black' : ''
+                    pathname === "/" ? "bg-black" : ""
                   }`}
                 >
                   Home
@@ -76,7 +77,7 @@ function Navbar() {
                 <Link
                   href='/properties'
                   className={`text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 ${
-                    pathname === '/properties' ? 'bg-black' : ''
+                    pathname === "/properties" ? "bg-black" : ""
                   }`}
                 >
                   Properties
@@ -85,7 +86,7 @@ function Navbar() {
                   <Link
                     href='/properties/add'
                     className={`text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 ${
-                      pathname === '/properties/add' ? 'bg-black' : ''
+                      pathname === "/properties/add" ? "bg-black" : ""
                     }`}
                   >
                     Add Property
@@ -139,9 +140,7 @@ function Navbar() {
                     />
                   </svg>
                 </button>
-                <span className='absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full'>
-                  2{/* Replace with the actual number of notifications  */}
-                </span>
+                <UnreadMessageCount />
               </Link>
               {/* Profile dropdown button  */}
               <div className='relative ml-3'>
@@ -224,7 +223,7 @@ function Navbar() {
             <Link
               href='/'
               className={`text-white block rounded-md px-3 py-2 text-base font-medium ${
-                pathname === '/' ? 'bg-black' : ''
+                pathname === "/" ? "bg-black" : ""
               }`}
             >
               Home
@@ -232,7 +231,7 @@ function Navbar() {
             <Link
               href='/properties'
               className={`text-white block rounded-md px-3 py-2 text-base font-medium ${
-                pathname === '/properties' ? 'bg-black' : ''
+                pathname === "/properties" ? "bg-black" : ""
               }`}
             >
               Properties
@@ -241,7 +240,7 @@ function Navbar() {
               <Link
                 href='/properties/add'
                 className={`text-white block rounded-md px-3 py-2 text-base font-medium ${
-                  pathname === '/properties/add' ? 'bg-black' : ''
+                  pathname === "/properties/add" ? "bg-black" : ""
                 }`}
               >
                 Add Property
