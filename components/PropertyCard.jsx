@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { FaBath, FaBed, FaMapMarker, FaMoneyBill, FaRulerCombined } from 'react-icons/fa';
+import Image from "next/image";
+import Link from "next/link";
+import { FaBath, FaBed, FaMapMarker, FaMoneyBill, FaRulerCombined } from "react-icons/fa";
 function PropertyCard({ property }) {
   const getRateDisplay = () => {
     const { rates } = property;
@@ -11,19 +11,21 @@ function PropertyCard({ property }) {
     } else if (rates.nightly) {
       return `$${rates.nightly.toLocaleString()}/night`;
     } else {
-      return 'N/A';
+      return "N/A";
     }
   };
   return (
     <div className='rounded-xl shadow-md relative'>
-      <Image
-        src={property.images[0]}
-        alt=''
-        className='w-full h-auto rounded-t-xl'
-        width={0}
-        height={0}
-        sizes='100vw'
-      />
+      <Link href={`/properties/${property._id}`}>
+        <Image
+          src={property.images[0]}
+          alt=''
+          className='w-full h-auto rounded-t-xl'
+          width={0}
+          height={0}
+          sizes='100vw'
+        />
+      </Link>
       <div className='p-4'>
         <div className='text-left md:text-center lg:text-left mb-6'>
           <div className='text-gray-600'>{property.type}</div>
@@ -38,7 +40,7 @@ function PropertyCard({ property }) {
             <FaBed className='md:hidden lg:inline' /> {property.beds} <span className='md:hidden lg:inline'>Beds</span>
           </p>
           <p>
-            <FaBath className='md:hidden lg:inline' /> {property.baths}{' '}
+            <FaBath className='md:hidden lg:inline' /> {property.baths}{" "}
             <span className='md:hidden lg:inline'>Baths</span>
           </p>
           <p>
@@ -62,8 +64,8 @@ function PropertyCard({ property }) {
           <div className='flex align-middle gap-2 mb-4 lg:mb-0'>
             <FaMapMarker className='md:hidden lg:inline text-orange-700 mt-1' />
             <span className='text-orange-700'>
-              {' '}
-              {property.location.city}, {property.location.state}{' '}
+              {" "}
+              {property.location.city}, {property.location.state}{" "}
             </span>
           </div>
           <Link

@@ -1,5 +1,7 @@
 export { default as AuthProvider } from "./AuthProvider";
 export { default as BookmarkButton } from "./BookmarkButton";
+export { default as FeaturedProperties } from "./FeaturedProperties";
+export { default as FeaturedPropertyCard } from "./FeaturedPropertyCard";
 export { default as Footer } from "./Footer";
 export { default as Hero } from "./Hero";
 export { default as HomeProperties } from "./HomeProperties";
@@ -7,6 +9,7 @@ export { default as InfoBox } from "./InfoBox";
 export { default as InfoBoxes } from "./InfoBoxes";
 export { default as MessageCard } from "./MessageCard";
 export { default as Navbar } from "./Navbar";
+export { default as Pagination } from "./Pagination";
 export { default as ProfileProperties } from "./ProfileProperties";
 export { default as PropertyAddForm } from "./PropertyAddForm";
 export { default as PropertyCard } from "./PropertyCard";

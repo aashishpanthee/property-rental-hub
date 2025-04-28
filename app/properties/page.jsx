@@ -1,10 +1,14 @@
-import { PropertyCard } from "@/components";
+import { Pagination, PropertyCard } from "@/components";
 import connectDb from "@/config/database";
 import Property from "@/models/Property";
 
-async function PropertiesPage() {
+async function PropertiesPage({ searchParams }) {
   await connectDb();
-  const properties = await Property.find({}).lean();
+  const { page = 1, pageSize = 9 } = await searchParams;
+  const skip = (page - 1) * pageSize;
+  const total = await Property.countDocuments({});
+  const properties = await Property.find({}).skip(skip).limit(pageSize);
+  const showPagination = total > pageSize;
   return (
     <section className='px-4 py-6'>
       <div className='container-xl lg:container m-auto px-4 py-6'>
@@ -17,6 +21,7 @@ async function PropertiesPage() {
             ))}
           </div>
         )}
+        {showPagination && <Pagination page={parseInt(page)} pageSize={parseInt(pageSize)} totalItems={total} />}
       </div>
     </section>
   );

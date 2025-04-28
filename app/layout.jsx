@@ -1,6 +1,7 @@
 import "@/assets/styles/globals.css";
 import { AuthProvider, Footer, Navbar } from "@/components";
 import { GlobalContextProvider } from "@/context/GlobalContext";
+import "photoswipe/dist/photoswipe.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
