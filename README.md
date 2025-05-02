@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Property Rental Hub
+
+A modern, full-stack property rental platform built with Next.js, MongoDB, and Tailwind CSS. This application allows users to browse, search, and manage property listings with a beautiful and responsive user interface.
+
+## Features
+
+- 🔍 Advanced property search and filtering
+- 📱 Responsive design for all devices
+- 🔐 User authentication and authorization
+- 📸 Image gallery with PhotoSwipe integration
+- 💬 Messaging system between users
+- 👤 User profiles and property management
+- 🌐 Social sharing capabilities
+- 🔔 Real-time notifications
+- 🎨 Modern UI with Tailwind CSS
+
+## Tech Stack
+
+- **Frontend:**
+
+  - Next.js 15.3.0
+  - React 19.0.0
+  - Tailwind CSS
+  - React Icons
+  - React Toastify
+  - React Spinners
+  - PhotoSwipe Gallery
+
+- **Backend:**
+
+  - Next.js API Routes
+  - MongoDB with Mongoose
+  - NextAuth.js for authentication
+
+- **Storage:**
+  - Cloudinary for image storage
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js (Latest LTS version recommended)
+- MongoDB database
+- Cloudinary account
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/property-rental-hub.git
+   cd property-rental-hub
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file in the root directory and add the following environment variables:
+
+   ```
+   MONGODB_URI=your_mongodb_connection_string
+   NEXT_PUBLIC_DOMAIN=http://localhost:3000
+   NEXT_PUBLIC_API_DOMAIN=http://localhost:3000/api
+   NEXTAUTH_SECRET=your_nextauth_secret
+   NEXTAUTH_URL=http://localhost:3000
+   NEXTAUTH_URL_INTERNAL=http://localhost:3000
+   CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+   CLOUDINARY_API_KEY=your_cloudinary_api_key
+   CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+   GOOGLE_CLIENT_ID=your_goole_client_id
+   GOOGLE_CLIENT_SECRET=your_google_client_secret
+
+   ```
+
+4. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Project Structure
+
+```
+property-rental-hub/
+├── app/                 # Next.js app directory
+│   ├── actions/        # Server actions
+│   ├── api/           # API routes
+│   ├── messages/      # Messaging system
+│   ├── properties/    # Property listings
+│   └── profile/       # User profiles
+├── components/         # Reusable components
+├── config/            # Configuration files
+├── context/           # React context providers
+├── models/            # MongoDB models
+├── public/            # Static assets
+└── utils/             # Utility functions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Available Scripts
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build the application for production
+- `npm run start` - Start the production server
+- `npm run lint` - Run ESLint
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Contributing
 
-## Learn More
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Acknowledgments
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js team for the amazing framework
+- MongoDB for the database
+- Cloudinary for image storage
+- All contributors who have helped shape this project
